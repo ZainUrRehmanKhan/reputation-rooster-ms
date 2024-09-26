@@ -1,0 +1,61 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+  rabbitmq:
+    image: rabbitmq:3.11-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    depends_on:
+      - mongo
+  account:
+    build:
+      context: .
+      dockerfile: ./apps/account/Dockerfile
+      target: development
+    command: npm run start:dev account
+    depends_on:
+      - mongo
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+  person:
+    build:
+      context: .
+      dockerfile: ./apps/person/Dockerfile
+      target: development
+    command: npm run start:dev person
+    depends_on:
+      - mongo
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ./apps/api-gateway/Dockerfile
+      target: development
+    command: npm run start:dev api-gateway
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '4000:4000'
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/

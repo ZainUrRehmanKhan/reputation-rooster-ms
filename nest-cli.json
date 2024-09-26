@@ -1,0 +1,123 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/person/src",
+  "monorepo": true,
+  "root": "apps/person",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/person/tsconfig.app.json"
+  },
+  "generateOptions": {
+    "spec": false
+  },
+  "projects": {
+    "person": {
+      "type": "application",
+      "root": "apps/person",
+      "entryFile": "main",
+      "sourceRoot": "apps/person/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/person/tsconfig.app.json"
+      }
+    },
+    "company": {
+      "type": "application",
+      "root": "apps/company",
+      "entryFile": "main",
+      "sourceRoot": "apps/company/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/company/tsconfig.app.json"
+      }
+    },
+    "campaign": {
+      "type": "application",
+      "root": "apps/campaign",
+      "entryFile": "main",
+      "sourceRoot": "apps/campaign/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/campaign/tsconfig.app.json"
+      }
+    },
+    "setting": {
+      "type": "application",
+      "root": "apps/setting",
+      "entryFile": "main",
+      "sourceRoot": "apps/setting/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/setting/tsconfig.app.json"
+      }
+    },
+    "microsite": {
+      "type": "application",
+      "root": "apps/microsite",
+      "entryFile": "main",
+      "sourceRoot": "apps/microsite/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/microsite/tsconfig.app.json"
+      }
+    },
+    "contact": {
+      "type": "application",
+      "root": "apps/contact",
+      "entryFile": "main",
+      "sourceRoot": "apps/contact/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/contact/tsconfig.app.json"
+      }
+    },
+    "billing": {
+      "type": "application",
+      "root": "apps/billing",
+      "entryFile": "main",
+      "sourceRoot": "apps/billing/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/billing/tsconfig.app.json"
+      }
+    },
+    "common": {
+      "type": "library",
+      "root": "libs/common",
+      "entryFile": "index",
+      "sourceRoot": "libs/common/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/common/tsconfig.lib.json"
+      }
+    },
+    "notification": {
+      "type": "application",
+      "root": "apps/notification",
+      "entryFile": "main",
+      "sourceRoot": "apps/notification/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/notification/tsconfig.app.json"
+      }
+    },
+    "entities": {
+      "type": "library",
+      "root": "libs/entities",
+      "entryFile": "index",
+      "sourceRoot": "libs/entities/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/entities/tsconfig.lib.json"
+      }
+    },
+    "account": {
+      "type": "application",
+      "root": "apps/account",
+      "entryFile": "main",
+      "sourceRoot": "apps/account/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/account/tsconfig.app.json"
+      }
+    },
+    "api-gateway": {
+      "type": "application",
+      "root": "apps/api-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/api-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
+      }
+    }
+  }
+}
